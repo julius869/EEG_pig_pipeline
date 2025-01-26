@@ -186,7 +186,7 @@ for s = 1:size(EEG, 2)
         fitted_fft = (X' * B)'; % Includes B0 and B2; matches dimensions of eeg_fft_filtered
         
         % Compute residuals
-        residuals = eeg_fft - fitted_fft;
+        residuals = abs(eeg_fft) - abs(fitted_fft);
         
         % Transform back to time domain
         cleaned_data = real(ifft(residuals, [], 2)); % Residuals transformed back
